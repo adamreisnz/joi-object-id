@@ -1,7 +1,7 @@
 {
   "name": "@meanie/joi-object-id",
   "description": "A Joi extension to validation MongoDB ObjectId formats",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/meanie/joi-object-id#readme",
   "author": {
     "name": "Adam Reis",
