@@ -1,4 +1,3 @@
-/* eslint no-unused-vars: off */
 'use strict';
 
 /**
@@ -10,23 +9,19 @@ const {Types: {ObjectId}} = require('mongoose');
  * Extend Joi with ObjectId validation
  */
 module.exports = Joi => ({
+  type: 'objectId',
   base: Joi.string(),
-  name: 'string',
-  language: {
+  messages: {
     objectId: 'needs to be a valid ObjectId',
   },
-  rules: [
-    {
-      name: 'objectId',
-      setup(params) {
-        this._flags.objectId = true;
-      },
-      validate(params, value, state, options) {
-        if (value.match(/^[0-9a-fA-F]{24}$/)) {
-          return new ObjectId(value);
-        }
-        return this.createError('string.objectId', {value}, state, options);
-      },
-    },
-  ],
+  coerce(value) {
+    value = new ObjectId(value);
+    return {value};
+  },
+  validate(value, helpers) {
+    if (!value.match(/^[0-9a-fA-F]{24}$/)) {
+      const errors = helpers.error('objectId');
+      return {value, errors};
+    }
+  },
 });
