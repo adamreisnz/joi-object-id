@@ -10,7 +10,7 @@ const {Types: {ObjectId}} = require('mongoose');
  */
 module.exports = Joi => ({
   type: 'objectId',
-  base: Joi.string(),
+  base: Joi.any(),
   messages: {
     objectId: 'needs to be a valid ObjectId',
   },
@@ -19,7 +19,7 @@ module.exports = Joi => ({
     return {value};
   },
   validate(value, helpers) {
-    if (!value.match(/^[0-9a-fA-F]{24}$/)) {
+    if (!String(value).match(/^[0-9a-fA-F]{24}$/)) {
       const errors = helpers.error('objectId');
       return {value, errors};
     }
