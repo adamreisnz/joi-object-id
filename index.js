@@ -15,11 +15,22 @@ module.exports = Joi => ({
     objectId: 'needs to be a valid ObjectId',
   },
   coerce(value) {
-    value = new ObjectId(value);
+
+    //No value
+    if (!value) {
+      return;
+    }
+
+    //Convert to object ID
+    if (String(value).match(/^[0-9a-fA-F]{24}$/)) {
+      value = new ObjectId(value);
+    }
+
+    //Return new value
     return {value};
   },
   validate(value, helpers) {
-    if (!String(value).match(/^[0-9a-fA-F]{24}$/)) {
+    if (!value instanceof ObjectId) {
       const errors = helpers.error('objectId');
       return {value, errors};
     }
