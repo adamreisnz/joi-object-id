@@ -21,21 +21,16 @@ module.exports = Joi => ({
       return;
     }
 
-    //Convert to object ID
-    if (String(value).match(/^[0-9a-fA-F]{24}$/)) {
-      try {
-        value = new ObjectId(value);
-      }
-      catch (error) {
-        value = null;
-      }
+    //Convert string to object ID
+    if (typeof value === 'string' && value.match(/^[0-9a-fA-F]{24}$/)) {
+      value = new ObjectId(value);
     }
 
     //Return new value
     return {value};
   },
   validate(value, helpers) {
-    if (!value instanceof ObjectId) {
+    if (!(value instanceof ObjectId)) {
       const errors = helpers.error('objectId');
       return {value, errors};
     }
