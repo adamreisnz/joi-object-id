@@ -23,7 +23,12 @@ module.exports = Joi => ({
 
     //Convert to object ID
     if (String(value).match(/^[0-9a-fA-F]{24}$/)) {
-      value = new ObjectId(value);
+      try {
+        value = new ObjectId(value);
+      }
+      catch (error) {
+        value = null;
+      }
     }
 
     //Return new value
