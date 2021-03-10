@@ -32,7 +32,7 @@
   },
   "main": "index.js",
   "peerDependencies": {
-    "@hapi/joi": ">=17.0.0",
+    "joi": ">=17.0.0",
     "mongoose": ">=5.8.7"
   },
   "scripts": {
