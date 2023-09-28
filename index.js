@@ -1,14 +1,10 @@
-'use strict';
-
-/**
- * Dependencies
- */
-const {Types: {ObjectId}} = require('mongoose');
+import mongoose from 'mongoose'
+const {Types: {ObjectId}} = mongoose
 
 /**
  * Extend Joi with ObjectId validation
  */
-module.exports = Joi => ({
+export default Joi => ({
   type: 'objectId',
   base: Joi.any(),
   messages: {
@@ -18,21 +14,21 @@ module.exports = Joi => ({
 
     //No value
     if (!value) {
-      return;
+      return
     }
 
     //Convert string to object ID
     if (typeof value === 'string' && value.match(/^[0-9a-fA-F]{24}$/)) {
-      value = new ObjectId(value);
+      value = new ObjectId(value)
     }
 
     //Return new value
-    return {value};
+    return {value}
   },
   validate(value, helpers) {
     if (!(value instanceof ObjectId)) {
-      const errors = helpers.error('objectId');
+      const errors = helpers.error('objectId')
       return {value, errors};
     }
   },
-});
+})

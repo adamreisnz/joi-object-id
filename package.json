@@ -1,12 +1,12 @@
 {
-  "name": "@meanie/joi-object-id",
+  "name": "@reis/joi-object-id",
   "description": "A Joi extension to validation MongoDB ObjectId formats",
-  "version": "2.3.0",
-  "homepage": "https://github.com/meanie/joi-object-id#readme",
+  "version": "3.0.0",
+  "type": "module",
+  "homepage": "https://github.com/adamreisnz/joi-object-id#readme",
   "author": {
     "name": "Adam Reis",
-    "email": "adam@helloclub.com",
-    "url": "https://helloclub.com"
+    "email": "adam@reis.nz"
   },
   "contributors": [],
   "license": "MIT",
@@ -15,27 +15,28 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meanie/joi-object-id.git"
+    "url": "git+https://github.com/adamreisnz/joi-object-id.git"
   },
   "bugs": {
-    "url": "https://github.com/meanie/joi-object-id/issues"
+    "url": "https://github.com/adamreisnz/joi-object-id/issues"
   },
   "keywords": [
-    "meanie",
     "joi",
     "extension",
     "object-id",
-    "objectid"
+    "objectid",
+    "mongoose",
+    "mongodb"
   ],
   "engines": {
-    "node": ">=8"
+    "node": ">=18"
   },
   "main": "index.js",
   "peerDependencies": {
-    "joi": ">=17.0.0",
-    "mongoose": ">=5.8.7"
+    "joi": ">=17.9.1",
+    "mongoose": ">=7.1.0"
   },
   "scripts": {
-    "postversion": "git push && git push --tags && npm publish"
+    "postversion": "git push && npm publish"
   }
 }
